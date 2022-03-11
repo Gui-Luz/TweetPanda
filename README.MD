@@ -4,7 +4,7 @@
 
 ### Installation
 ```shell
-git clone
+git clone https://github.com/Gui-Luz/TweetPanda.git
 pip install -r requirements.txt
 ```
 ### Creating a Tweet Panda object
