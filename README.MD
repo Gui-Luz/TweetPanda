@@ -1,6 +1,6 @@
 # Tweet Panda
 ## Tweet Panda is a python object that helps you quickly extract meaningful data from Twitter datasets.
-### It is built on top of pandas dataframes, delivering simple methods to extract information such as top hashtags, hashtag time series, rank user accounts, and more.
+### It is built on top of [Pandas](https://pandas.pydata.org/) dataframes, delivering simple methods to extract information such as top hashtags, hashtag time series, rank user accounts, and more.
 
 ### Installation
 ```shell
