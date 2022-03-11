@@ -8,7 +8,7 @@ git clone https://github.com/Gui-Luz/TweetPanda.git
 pip install -r requirements.txt
 ```
 ### Creating a Tweet Panda object
-If you are working with a twint generate dataset you can simple pass your file as an argument:
+If you are working with a [twint](https://github.com/twintproject/twint) generated dataset you can simple pass your file as an argument:
 ```python
 from tweet_panda import TweetPanda
 
