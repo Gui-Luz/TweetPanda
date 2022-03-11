@@ -66,4 +66,3 @@ class TweetPanda:
         if 'date' in self.filtered_df:
             self.filtered_df['count'] = 1
             return self.filtered_df.groupby('date').sum('count')['count']
-
