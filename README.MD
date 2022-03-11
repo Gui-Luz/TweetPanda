@@ -14,7 +14,7 @@ from tweet_panda import TweetPanda
 
 tp = TweetPanda(file='my_twint_dataset.csv')
 ```
-If you have a dataset from a different source, you should also specify that dataset columns that you are using:
+If you have a dataset from a different source, you should also specify the dataset columns that you are using:
 ```python
 from tweet_panda import TweetPanda
 tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username='username_column_name', 
@@ -28,6 +28,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 ```
 ```python3
 >>>tp.rank_usernames()
+
     paulcurtis1956     17
     brcctlc             4
     top50clean          3
@@ -36,6 +37,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 ```
 ```python3
 >>>tp.rank_hashtags()
+
     FridayFeeling      82
     Friday             24
     Weekendvibes       17
@@ -44,6 +46,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 ```
 ```python3
 >>>tp.rank_mentions()
+
     MichelleHardie6             1
     spooooookyszn               1
     VisionaryMinds2             1
@@ -53,6 +56,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 ```
 ```python3
 >>>tp.rank_urls()
+
     https://t.co/YC65EIiAot     1
     https://t.co/OFicTUzgOO     1
     https://t.co/y6MTofOh2k     1
@@ -61,6 +65,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 ```
 ```python3
 >>>tp.sort_by_replies()
+
            date         username                                              tweet  ... replies_count  retweets_count  likes_count
 26   2022-03-11         ouchyomh  Which song do you prefer?   Run to the Hills o...  ...             7               0            6
 29   2022-03-11      brynbentley  My #Snapchat got deleted. Anyways.. #HappyFrid...  ...             2               0            1
@@ -70,6 +75,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 ```
 ```python3
 >>>tp.sort_by_retweets()
+
            date         username                                              tweet   replies_count  retweets_count  likes_count
 68   2022-03-11    rappcatsadopt  ✨Introducing Cyrus✨This young kitty was rescue...           0              18           58
 89   2022-03-11          jaouitv  🥳 #FridayFeeling GIFT CARD GIVEAWAY 🥳  RETWEET...           0               6            5
@@ -79,6 +85,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 ```
 ```python3
 >>>tp.sort_by_likes()
+
            date        username                                              tweet  ... replies_count  retweets_count  likes_count
 68   2022-03-11   rappcatsadopt  ✨Introducing Cyrus✨This young kitty was rescue...  ...           0              18           58
 7    2022-03-11  sienkiewiczart      #FridayFeeling #Dune  https://t.co/pzsPLfw7ZQ  ...             1               1           15
@@ -88,6 +95,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 ```
 ```python3
 >>>tp.get_time_series()
+
 date
 2022-03-11      110
 2022-03-10      32    
