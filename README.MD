@@ -2,12 +2,12 @@
 ## Tweet Panda is a python object that helps you to quickly extract meaningful data from Twitter datasets.
 ### It is built on top of pandas dataframes, delivering simple methods to extract information such as top hashtags, hashtag time series, rank user accounts, and others.
 
-###Installation
+### Installation
 ```shell
 git clone
 pip install -r requirements.txt
 ```
-###Creating a Tweet Panda object
+### Creating a Tweet Panda object
 If you are working with a twint generate dataset you can simple pass your file as an argument:
 ```python
 from tweet_panda import TweetPanda
@@ -21,7 +21,7 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
                 name='name_column_name', tweet='tweet_column_name', replies_count='replies_column_name', 
                 retweets_count='retweet_column_name', likes_count='likes_column_name')
 ```
-###Methods
+### Methods
 ```python
 >>>from tweet_panda import TweetPanda
 >>>tp = TweetPanda(file='#FridayFellings.csv')
