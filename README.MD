@@ -14,7 +14,7 @@ from tweet_panda import TweetPanda
 
 tp = TweetPanda(file='my_twint_dataset.csv')
 ```
-If you have a dataset from a different source, you should also specify the dataset columns that you are using:
+If you have a dataset from a different source you should also specify the dataset columns that you are using:
 ```python
 from tweet_panda import TweetPanda
 tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username='username_column_name', 
