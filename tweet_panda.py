@@ -35,7 +35,7 @@ class TweetPanda:
         return artifacts
 
     def rank_usernames(self):
-        if 'usernames' in self.filtered_df:
+        if 'username' in self.filtered_df:
             return self.filtered_df['username'].value_counts()
 
     def rank_hashtags(self):
