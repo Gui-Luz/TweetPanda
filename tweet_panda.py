@@ -7,7 +7,7 @@ class TweetPanda:
                  likes_count=None):
         self._file = file
         self._args = [date, username, name, tweet, replies_count, retweets_count, likes_count]
-        self._map = {date: 'date', username: 'username', tweet: 'tweet', name: 'name', replies_count: 'replies_count',
+        self._map = {date: 'date', username: 'username', name: 'name', tweet: 'tweet', replies_count: 'replies_count',
                      retweets_count: 'retweets_count', likes_count: 'likes_count'}
         self._generate_filtered_df()
 
@@ -24,7 +24,7 @@ class TweetPanda:
             self.filtered_df = self.filtered_df.rename(columns=self._map)
         else:
             self.filtered_df = df[
-                ['date', 'username', 'tweet', 'name', 'replies_count', 'retweets_count', 'likes_count']]
+                ['date', 'username', 'name', 'tweet', 'replies_count', 'retweets_count', 'likes_count']]
 
     def _extract_artifact(self, pattern):
         artifacts = []
@@ -52,15 +52,15 @@ class TweetPanda:
 
     def sort_by_replies(self):
         if 'replies_count' in self.filtered_df:
-            return self.filtered_df.sort_values(by='replies_count', ascending=False)
+            return self.filtered_df.sort_values(by='replies_count', ascending=False, ignore_index=True)
 
     def sort_by_retweets(self):
         if 'retweets_count' in self.filtered_df:
-            return self.filtered_df.sort_values(by='retweets_count', ascending=False)
+            return self.filtered_df.sort_values(by='retweets_count', ascending=False, ignore_index=True)
 
     def sort_by_likes(self):
         if 'likes_count' in self.filtered_df:
-            return self.filtered_df.sort_values(by='likes_count', ascending=False)
+            return self.filtered_df.sort_values(by='likes_count', ascending=False, ignore_index=True)
 
     def get_time_series(self):
         if 'date' in self.filtered_df:
@@ -71,3 +71,9 @@ class TweetPanda:
         result = eval(f'self.{method}()')
         print(type(result))
         result.to_csv(file_name)
+
+    def print_results(self, method, max_rows=None):
+        if max_rows is None:
+            max_rows = len(self.filtered_df)
+        result = eval(f'self.{method}()')
+        print(result.to_string(justify='justify-all', max_rows=max_rows))

@@ -103,3 +103,7 @@ date
 2022-03-08      29
 2022-03-07      45    
 ```
+````python
+>>>tp.save_csv(file_name='my_time_series.csv', method='get_time_series')
+# Saves the result of another method into a csv file
+````
