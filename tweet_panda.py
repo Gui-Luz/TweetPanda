@@ -66,3 +66,8 @@ class TweetPanda:
         if 'date' in self.filtered_df:
             self.filtered_df['count'] = 1
             return self.filtered_df.groupby('date').sum('count')['count']
+
+    def save_csv(self, file_name, method):
+        result = eval(f'self.{method}()')
+        print(type(result))
+        result.to_csv(file_name)
