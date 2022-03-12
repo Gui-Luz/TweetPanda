@@ -77,3 +77,7 @@ class TweetPanda:
             max_rows = len(self.filtered_df)
         result = eval(f'self.{method}()')
         print(result.to_string(justify='justify-all', max_rows=max_rows))
+
+    @property
+    def df(self):
+        return self.filtered_df

@@ -123,3 +123,15 @@ tp.print_results('sort_by_replies', 10)
 109  2022-03-11      305mosquito  Miami-Dade County Mosquito Control              #FridayFeeling: stay #mosquito bite free today and all weekend by applying an @EPA-registered #repellent before venturing outdoors. Bonus tip: apply your sunscreen first, then your repellent. Find out which type is best for you here:  https://t.co/hvdCBiHvf8.              0               0            0
 
 ````
+### Properties
+````python
+### accessing the pandas dataframe for regular pandas manipulation
+>>>df = tp.df
+>>>df.head(2)
+
+         date       username  ... likes_count count
+0  2022-03-11  mtorezwriting  ...           0     1
+1  2022-03-11        brcctlc  ...           0     1
+[2 rows x 8 columns]
+````
+
