@@ -93,15 +93,23 @@ tp = TweetPanda(file='my_twiter_dataset.csv', date='date_column_name', username=
 78   2022-03-11        pentapod  Daily coworker photo: Friday feels! And Friday...  ...             1               1           12
 35   2022-03-11      tomfolanmd  Radiologists heading for exit at 4:59pm   #Fri...  ...             0               0            8
 ```
+
 ```python3
->>>tp.get_time_series()
+>> > tp.time_series()
 
 date
-2022-03-11      110
-2022-03-10      32    
-2022-03-09      30
-2022-03-08      29
-2022-03-07      45    
+2022 - 03 - 11
+110
+2022 - 03 - 10
+32
+2022 - 03 - 0
+9
+30
+2022 - 03 - 0
+8
+29
+2022 - 03 - 07
+45    
 ```
 ````python
 >>>tp.save_csv(file_name='my_time_series.csv', method='get_time_series')

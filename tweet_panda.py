@@ -34,38 +34,30 @@ class TweetPanda:
                 artifacts.append(artifact)
         return artifacts
 
-    def rank_usernames(self):
-        if 'username' in self.filtered_df:
-            return self.filtered_df['username'].value_counts()
+    def rank(self, attribute):
+        if attribute == 'username':
+            if 'username' in self.filtered_df:
+                frame = self._rank_username(attribute)
+                return frame
+        else:
+            if 'tweet' in self.filtered_df:
+                frame = self._rank_other_attributes(attribute)
+                return frame
+            else:
+                raise ImportError("Your dataset don't contain tweets")
 
-    def rank_hashtags(self):
-        if 'tweet' in self.filtered_df:
-            return pd.Series(self.hashtags).value_counts()
+    def sort(self, attribute):
+        if attribute in self.filtered_df:
+            return self.filtered_df.sort_values(by=attribute, ascending=False, ignore_index=True)
+        else:
+            raise AttributeError("You didn't provided a valid attribute")
 
-    def rank_mentions(self):
-        if 'tweet' in self.filtered_df:
-            return pd.Series(self.mentions).value_counts()
-
-    def rank_urls(self):
-        if 'tweet' in self.filtered_df:
-            return pd.Series(self.urls).value_counts()
-
-    def sort_by_replies(self):
-        if 'replies_count' in self.filtered_df:
-            return self.filtered_df.sort_values(by='replies_count', ascending=False, ignore_index=True)
-
-    def sort_by_retweets(self):
-        if 'retweets_count' in self.filtered_df:
-            return self.filtered_df.sort_values(by='retweets_count', ascending=False, ignore_index=True)
-
-    def sort_by_likes(self):
-        if 'likes_count' in self.filtered_df:
-            return self.filtered_df.sort_values(by='likes_count', ascending=False, ignore_index=True)
-
-    def get_time_series(self):
+    def time_series(self):
         if 'date' in self.filtered_df:
             self.filtered_df['count'] = 1
             return self.filtered_df.groupby('date').sum('count')['count']
+        else:
+            raise ImportError("Your dataset don't contain dates")
 
     def save_csv(self, file_name, method):
         result = eval(f'self.{method}()')
@@ -78,6 +70,33 @@ class TweetPanda:
         result = eval(f'self.{method}()')
         print(result.to_string(justify='justify-all', max_rows=max_rows))
 
+    def _rank_username(self, attribute):
+        series = self.filtered_df[attribute].value_counts()
+        frame = self._convert_series_to_frame(series)
+        frame = self._rename_dataframe_columns(frame, attribute)
+        return frame
+
+    def _rank_other_attributes(self, attribute):
+        try:
+            object_attribute = eval(f'self.{attribute}')
+            series = pd.Series(object_attribute).value_counts()
+            frame = self._convert_series_to_frame(series)
+            frame = self._rename_dataframe_columns(frame, attribute)
+            return frame
+        except AttributeError as e:
+            raise AttributeError("You didn't provided a valid attribute")
+
     @property
     def df(self):
         return self.filtered_df
+
+    @staticmethod
+    def _convert_series_to_frame(series):
+        return series.to_frame()
+
+    @staticmethod
+    def _rename_dataframe_columns(frame, index_name):
+        frame.reset_index(inplace=True)
+        frame.columns = [index_name, 'count']
+        return frame
+
